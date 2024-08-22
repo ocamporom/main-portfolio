@@ -1,0 +1,27 @@
+{
+  "type": "module",
+  "scripts": {
+    "install:be": "cd backend && npm install",
+    "install:fe": "cd frontend && npm install",
+    "dev:be": "cd backend && npm run dev",
+    "dev:fe": "cd frontend && npm run dev",
+    "install:all": "npm run install:be && npm run install:fe",
+    "dev:all": "concurrently 'npm:dev:be' 'npm:dev:fe'",
+    "dev": "npm run dev:all",
+    "env": "cp backend/.env.example backend/.env && cp frontend/.env.example frontend/.env",
+    "prepare": "husky",
+    "lint:be": "cd backend && npm run lint:fix",
+    "lint:fe": "cd frontend && npm run lint:fix",
+    "prettier:be": "cd backend && npm run prettier",
+    "prettier:fe": "cd frontend && npm run prettier",
+    "prettier:all": "concurrently --raw 'npm:prettier:be' 'npm:prettier:fe'",
+    "prettier": "npm run prettier:all",
+    "lint:all": "concurrently --raw 'npm:lint:be' 'npm:lint:fe' 'npm:prettier'",
+    "lint": "npm run lint:all"
+  },
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^9.1.1"
+  }
+}

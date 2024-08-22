@@ -1,0 +1,12 @@
+.husky/
+node_modules
+*.log
+.env
+*.env
+.env.example
+eslint.config.js
+
+.DS_Store
+Thumbs.db
+__MACOSX
+._*

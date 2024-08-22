@@ -1,0 +1,37 @@
+---
+services:
+  fe:
+    image: project-fe:latest
+    networks:
+      - project_network
+    depends_on:
+      - be
+    environment:
+      VITE_BACKEND_URI: http://be:${PORT:-3000}
+    ports:
+      - "${FE_PORT:-80}:80"
+
+  be:
+    image: project-be:latest
+    networks:
+      - project_network
+    depends_on:
+      - db
+    environment:
+      MONGODB_URI: mongodb://db:27017/app
+    ports:
+      - "${BE_PORT:-3000}:3000"
+
+  db:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    networks:
+      - project_network
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+
+networks:
+  project_network:
+    driver: bridge
