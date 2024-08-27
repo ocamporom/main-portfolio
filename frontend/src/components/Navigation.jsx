@@ -10,8 +10,8 @@ const Navigation = () => {
             Home
           </Link>
           {/* <Link to="/about" className="hover:text-gray-400">About</Link> */}
-          <Link to="/technologies" className="hover:text-gray-400">
-            Technologies
+          <Link to="/projects" className="hover:text-gray-400">
+            Projects
           </Link>
           <Link to="/contact" className="hover:text-gray-400">
             Contact
